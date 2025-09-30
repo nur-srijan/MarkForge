@@ -1,0 +1,549 @@
+/* Premium Dark Theme - MarkForge */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #e1e5e9;
+  background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Premium Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(15, 20, 25, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.file-actions, .export-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Premium Buttons */
+button {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e1e5e9;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button i {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+button:hover i {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Export buttons with special styling */
+.export-actions button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.export-actions button:hover {
+  background: linear-gradient(135deg, #7c8ff0 0%, #8a5bb8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.export-actions button i {
+  opacity: 1;
+}
+
+/* Main container */
+#container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Split panes with premium styling */
+.split {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+#editor-container {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 20, 25, 0.8);
+}
+
+/* Premium Editor */
+#editor {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: #e1e5e9;
+  caret-color: #667eea;
+}
+
+#editor::placeholder {
+  color: rgba(225, 229, 233, 0.5);
+  font-style: italic;
+}
+
+/* Premium Preview */
+#preview-container {
+  background: rgba(26, 31, 46, 0.8);
+  padding: 24px;
+  overflow: auto;
+  position: relative;
+}
+
+#preview-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+}
+
+/* Premium GitHub Markdown styles */
+.markdown-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  word-wrap: break-word;
+  color: #e1e5e9;
+  position: relative;
+  z-index: 1;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.2em;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.6em;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  color: #f0f4f8;
+  margin-bottom: 20px;
+}
+
+.markdown-body h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #d1d5db;
+  margin-bottom: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #d1d5db;
+  margin-bottom: 12px;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.markdown-body h6 {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+.markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, 
+.markdown-body dl, .markdown-body table, .markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 4px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  color: #fbbf24;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.markdown-body pre {
+  padding: 20px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.5;
+  background: rgba(15, 20, 25, 0.9);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.markdown-body pre code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: none;
+  color: #e1e5e9;
+}
+
+.markdown-body blockquote {
+  padding: 16px 20px;
+  color: #9ca3af;
+  border-left: 4px solid #667eea;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 0 8px 8px 0;
+  margin: 24px 0;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin: 24px 0;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+  background: rgba(102, 126, 234, 0.1);
+  color: #ffffff;
+}
+
+.markdown-body table th, .markdown-body table td {
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-body table tr {
+  background: rgba(15, 20, 25, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background: rgba(26, 31, 46, 0.5);
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.markdown-body hr {
+  height: 2px;
+  padding: 0;
+  margin: 32px 0;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+  border: 0;
+  border-radius: 1px;
+}
+
+/* Lists with premium styling */
+.markdown-body ul, .markdown-body ol {
+  padding-left: 24px;
+}
+
+.markdown-body li {
+  margin-bottom: 8px;
+}
+
+.markdown-body ul li::marker {
+  color: #667eea;
+}
+
+.markdown-body ol li::marker {
+  color: #fbbf24;
+}
+
+/* Links */
+.markdown-body a {
+  color: #667eea;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.markdown-body a:hover {
+  color: #7c8ff0;
+  border-bottom-color: #7c8ff0;
+}
+
+/* Premium Status Bar */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: rgba(15, 20, 25, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  color: #9ca3af;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.status-bar span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.status-bar span:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.status-bar i {
+  font-size: 12px;
+  opacity: 0.7;
+  color: #667eea;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 20, 25, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+/* Split.js gutter styling */
+.gutter {
+  background: rgba(102, 126, 234, 0.2);
+  border-left: 1px solid rgba(102, 126, 234, 0.3);
+  border-right: 1px solid rgba(102, 126, 234, 0.3);
+  cursor: col-resize;
+  position: relative;
+}
+
+.gutter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 20px;
+  background: rgba(102, 126, 234, 0.6);
+  border-radius: 1px;
+}
+
+/* Animation for content loading */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.markdown-body {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Focus states */
+#editor:focus {
+  background: rgba(15, 20, 25, 0.9);
+}
+
+/* KaTeX LaTeX styling for premium dark theme */
+.katex {
+  font-size: 1.1em;
+  color: #e1e5e9;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  text-align: center;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.katex-display .katex {
+  font-size: 1.2em;
+}
+
+.katex-error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+/* Inline math styling */
+.katex:not(.katex-display) {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 4px;
+  padding: 2px 6px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* KaTeX elements styling */
+.katex .mord {
+  color: #e1e5e9;
+}
+
+.katex .mbin {
+  color: #fbbf24;
+}
+
+.katex .mrel {
+  color: #667eea;
+}
+
+.katex .mopen,
+.katex .mclose {
+  color: #fbbf24;
+}
+
+.katex .mpunct {
+  color: #9ca3af;
+}
+
+.katex .mop {
+  color: #667eea;
+}
+
+.katex .mord.text {
+  color: #e1e5e9;
+}
+
+.katex .mord.mathnormal {
+  color: #e1e5e9;
+}
+
+.katex .mord.mathdefault {
+  color: #e1e5e9;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: #ffffff;
+} 

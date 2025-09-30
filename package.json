@@ -1,0 +1,48 @@
+{
+  "name": "markforge",
+  "version": "1.0.0",
+  "description": "A lightweight Markdown editor with preview and export capabilities",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "markdown",
+    "editor",
+    "preview",
+    "export"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^29.1.0",
+    "electron-builder": "^24.13.3",
+    "highlight.js": "^11.9.0",
+    "marked": "^11.1.1"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "katex": "^0.16.22",
+    "puppeteer": "^24.15.0",
+    "split.js": "^1.6.5"
+  },
+  "build": {
+    "appId": "com.markforge.app",
+    "productName": "MarkForge",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}

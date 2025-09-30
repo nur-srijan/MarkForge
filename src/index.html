@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkForge</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../node_modules/highlight.js/styles/github-dark.css">
+  <link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="toolbar">
+    <div class="file-actions">
+      <button id="newBtn" title="New Document">
+        <i class="fas fa-file-alt"></i> New
+      </button>
+      <button id="openBtn" title="Open File">
+        <i class="fas fa-folder-open"></i> Open
+      </button>
+      <button id="saveBtn" title="Save">
+        <i class="fas fa-save"></i> Save
+      </button>
+      <button id="saveAsBtn" title="Save As">
+        <i class="fas fa-save"></i> Save As
+      </button>
+    </div>
+    <div class="export-actions">
+      <button id="exportHtmlBtn" title="Export to HTML">
+        <i class="fab fa-html5"></i> Export HTML
+      </button>
+      <button id="exportPdfBtn" title="Export to PDF">
+        <i class="fas fa-file-pdf"></i> Export PDF
+      </button>
+    </div>
+  </div>
+
+  <div id="container">
+    <div id="editor-container" class="split">
+      <textarea id="editor" placeholder="✨ Start writing your Markdown here..."></textarea>
+    </div>
+    <div id="preview-container" class="split">
+      <div id="preview" class="markdown-body"></div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span id="currentFile">
+      <i class="fas fa-file-alt"></i> Untitled
+    </span>
+    <span id="wordCount">
+      <i class="fas fa-font"></i> 0 words
+    </span>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html> 
