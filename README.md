@@ -60,7 +60,7 @@ This will create distributable packages in the `dist` directory.
 
 ## License
 
-ISC
+MIT
 
 ## Future Enhancements
 
